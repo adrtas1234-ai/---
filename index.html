@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101014">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="AION">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+  <title>AION</title>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand"><div class="logo">A</div><div><div class="brand-name">AION</div><div class="status" id="status">Личный ИИ-помощник</div></div></div>
+      <button class="icon-btn" id="settingsBtn" aria-label="Настройки">⚙</button>
+    </header>
+
+    <section class="chat" id="chat" aria-live="polite">
+      <div class="welcome" id="welcome">
+        <div class="orb">✦</div>
+        <h1>Чем займёмся?</h1>
+        <p>Твоё пространство для вопросов, идей и исследований.</p>
+        <div class="suggestions">
+          <button class="suggestion">Объясни сложную тему простыми словами</button>
+          <button class="suggestion">Помоги разобраться с новой идеей</button>
+          <button class="suggestion">Составь план обучения</button>
+        </div>
+      </div>
+    </section>
+
+    <form class="composer" id="composer">
+      <textarea id="prompt" rows="1" placeholder="Напиши сообщение AION…" autocomplete="off"></textarea>
+      <button class="send" id="sendBtn" type="submit" aria-label="Отправить">↑</button>
+    </form>
+    <div class="footnote" id="footnote">Локальная история · Подключение модели настраивается отдельно</div>
+  </main>
+
+  <dialog id="settings">
+    <form method="dialog" class="modal-head"><div><h2>Настройки</h2><p>Подключение совместимого ИИ-сервиса</p></div><button class="icon-btn">✕</button></form>
+    <div class="field"><label for="endpoint">API endpoint (OpenAI-compatible)</label><input id="endpoint" type="url" placeholder="https://example.com/v1/chat/completions"></div>
+    <div class="field"><label for="model">Название модели</label><input id="model" type="text" placeholder="model-name"></div>
+    <div class="field"><label for="apiKey">API key</label><input id="apiKey" type="password" placeholder="Вставь ключ провайдера"></div>
+    <p class="hint">Ключ хранится только в хранилище этого браузера. Не используй общедоступные устройства. Для надёжной защиты ключа лучше подключить собственный сервер-прокси. Само приложение не предоставляет бесплатный доступ к модели.</p>
+    <div class="settings-actions"><button type="button" class="danger" id="clearBtn">Очистить историю</button><button type="button" class="primary" id="saveBtn">Сохранить</button></div>
+    <p class="hint" id="settingsStatus"></p>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>
